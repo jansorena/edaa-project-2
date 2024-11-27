@@ -42,11 +42,11 @@ public:
 
         // Counting sort substrings of length 1
         for (i = 0; i < n; i++)
-            count[t[i]]++;
+            count[static_cast<unsigned char>(t[i])]++;
         for (i = 1; i < sigma; i++)
             count[i] += count[i - 1];
         for (i = n - 1; i >= 0; i--)
-            SA[--count[t[i]]] = i;
+            SA[--count[static_cast<unsigned char>(t[i])]] = i;
 
         // Set up ranks by comparing pairs and increasing by one if different
         r[SA[0]] = 0;
@@ -141,22 +141,9 @@ public:
     {
         std::int64_t total_memory = 0;
 
-        // Tamaño de la cadena _t
-        total_memory += sizeof(char) * _t.size();
-
-        // Tamaño de la vista de cadena t (punteros y tamaño)
-        total_memory += sizeof(std::string_view);
-
         // Tamaño del vector SA
         total_memory += sizeof(std::int64_t) * SA.size();
 
-        // Contamos el tamaño de los vectores temporales del constructor
-        // que no se almacenan, pero sí se crean, como `count`, `p`, `q`, `r`.
-        total_memory += sizeof(std::int64_t) * std::max(256, (int)_t.size()); // Para `count`
-        total_memory += sizeof(std::int64_t) * _t.size() * 3; // Para `p`, `q`, `r`
-
-        std::cout << "SA size in bytes: " << SA.size() << std::endl;
-        std::cout << "SA size in MB: " << SA.size() / (1024.0 * 1024.0) << std::endl;
         return total_memory;
     }
     
