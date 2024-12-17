@@ -3,9 +3,6 @@
 
 #include <sdsl/suffix_arrays.hpp>
 #include <sdsl/util.hpp>
-#include <string>
-#include <vector>
-#include <fstream>
 
 class fmindex {
 private:

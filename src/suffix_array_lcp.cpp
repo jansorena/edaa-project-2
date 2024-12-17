@@ -1,7 +1,3 @@
-/** Author: LELE
- *
- * O(n lg n) Suffix Array construction with O(m lg n) matching. */
-
 #ifndef SUFFIX_ARRAY_LCP
 #define SUFFIX_ARRAY_LCP
 
